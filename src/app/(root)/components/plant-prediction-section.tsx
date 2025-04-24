@@ -50,15 +50,11 @@ export default function PlantPredictionSection() {
       formData.append("image", blob, "plant-image.jpg");
 
       // Use the new Next.js API endpoint instead of the Flask backend
-      const result = await axios.post(
-        "http://localhost:3000/api/predict-plant",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      const result = await axios.post("/api/predict-plant", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      );
+      });
       return result.data;
     },
     onSuccess: (data) => {
